@@ -62,7 +62,6 @@ private:
 	MeshDeformation m_particleSystem;
 	Line line;
 	Box* m_wall;
-	VehicleCamera m_vehicleCamera;
 
 	bool camView;
 };

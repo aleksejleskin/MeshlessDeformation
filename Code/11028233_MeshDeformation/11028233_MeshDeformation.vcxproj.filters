@@ -16,16 +16,10 @@
     <ClCompile Include="Input.cpp">
       <Filter>Source\Core</Filter>
     </ClCompile>
-    <ClCompile Include="GampadInput.cpp">
-      <Filter>Source\Core</Filter>
-    </ClCompile>
     <ClCompile Include="DxGraphics.cpp">
       <Filter>Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="DirectInput.cpp">
-      <Filter>Source\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Debug.cpp">
       <Filter>Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
@@ -67,9 +61,6 @@
     <ClCompile Include="PhysicsManager.cpp">
       <Filter>Source\ResourceManagers</Filter>
     </ClCompile>
-    <ClCompile Include="VehicleCamera.cpp">
-      <Filter>Headers\Core</Filter>
-    </ClCompile>
     <ClCompile Include="LightManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -90,9 +81,6 @@
     <ClInclude Include="DxGraphics.h">
       <Filter>Headers\Core</Filter>
     </ClInclude>
-    <ClInclude Include="GamepadInput.h">
-      <Filter>Headers\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Headers\Core</Filter>
     </ClInclude>
@@ -106,9 +94,6 @@
       <Filter>Headers\Core</Filter>
     </ClInclude>
     <ClInclude Include="System.h">
-      <Filter>Headers\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Debug.h">
       <Filter>Headers\Core</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
@@ -156,17 +141,14 @@
     <ClInclude Include="PhysicsManager.h">
       <Filter>Headers\ResourceManagers</Filter>
     </ClInclude>
-    <ClInclude Include="VehicleCamera.h">
-      <Filter>Headers\Core</Filter>
-    </ClInclude>
     <ClInclude Include="LightManager.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="CellShaderObject.h">
-      <Filter>Source\cellshader</Filter>
-    </ClInclude>
     <ClInclude Include="DebugCamera.h">
       <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CellShaderObject.h">
+      <Filter>Headers\cellsahder</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
