@@ -76,7 +76,6 @@ void Game::Shutdown()
 {
 	if (!m_shutdown)
 	{
-		m_input->Shutdown();
 		m_system.Shutdown();
 		delete m_input;
 		m_shutdown = true;
@@ -101,9 +100,6 @@ bool Game::LoadContent()
 
 	m_debugCam.Initialise(XMFLOAT3(0.0f, 0.0f, -10.0f), 0.0f, 0.0f, 0.0f,
 		XM_PIDIV4, m_system.GetAspectRatio(), XMFLOAT3(0.0f, 0.0f, 1.0f));
-
-	m_vehicleCamera.Initialise(XMFLOAT3(0.0f, 2.0f, -17.0f), 0.0f, 0.0f, 0.0f,
-		XM_PIDIV4, m_system.GetAspectRatio(), XMFLOAT3(0.0f, 0.0f, 5.0f));
 
 	m_particleSystem.AddObject(box, m_system.GetDX(), m_resources, box->GetPosition());
 
@@ -156,10 +152,7 @@ void Game::Render()
 	{
 		cam = &m_debugCam;
 	}
-	else
-	{
-		cam = &m_vehicleCamera;
-	}
+
 
 	//line.Render(m_system.GetDX(), cam);
 	box->Render(m_system.GetDX(), *cam, m_lightManager);

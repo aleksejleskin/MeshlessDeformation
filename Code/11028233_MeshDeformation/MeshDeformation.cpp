@@ -273,7 +273,8 @@ void MeshDeformation::Update(float dt, DxGraphics *dx, DebugCamera& cam, DirectI
 		{
 			for (unsigned int point = 0; point < obj->m_controlPoints.size(); point++)
 			{
-				XMFLOAT3 poss = obj->m_controlPoints[point]->m_currentPos;
+				obj->m_controlPoints[point]->m_force = XMFLOAT3(0, 0, 0);
+				XMFLOAT3 poss = obj->m_controlPoints[point]->m_force;
 
 				if (IntersectRayOrientedBox(pickRayInWorldSpacePos, pickRayInWorldSpaceDir, &m_particles[point]->GetCollisionOBB(), &dist))
 				{
@@ -299,31 +300,31 @@ void MeshDeformation::Update(float dt, DxGraphics *dx, DebugCamera& cam, DirectI
 						//SET X
 						if (input->GetKeyboardState(DIK_NUMPAD7))
 						{
-							poss = poss + XMFLOAT3(1, 0, 0)*m_force;
+							poss =  XMFLOAT3(1, 0, 0)*m_force;
 						}
 						if (input->GetKeyboardState(DIK_NUMPAD4))
 						{
-							poss = poss + XMFLOAT3(-1, 0, 0)*m_force;
+							poss =  XMFLOAT3(-1, 0, 0)*m_force;
 						}
 
 						//SET Y
 						if (input->GetKeyboardState(DIK_NUMPAD8))
 						{
-							poss = poss + XMFLOAT3(0, 1, 0)*m_force;
+							poss =  XMFLOAT3(0, 1, 0)*m_force;
 						}
 						if (input->GetKeyboardState(DIK_NUMPAD5))
 						{
-							poss = poss + XMFLOAT3(0, -1, 0)*m_force;
+							poss =  XMFLOAT3(0, -1, 0)*m_force;
 						}
 
 						//SET Z
 						if (input->GetKeyboardState(DIK_NUMPAD9))
 						{
-							poss = poss + XMFLOAT3(0, 0, 1)*m_force;
+							poss =  XMFLOAT3(0, 0, 1)*m_force;
 						}
 						if (input->GetKeyboardState(DIK_NUMPAD6))
 						{
-							poss = poss + XMFLOAT3(0, 0, -1)*m_force;
+							poss =  XMFLOAT3(0, 0, -1)*m_force;
 						}
 						obj->m_controlPoints[point]->m_force = poss;
 					}
@@ -402,31 +403,32 @@ void MeshDeformation::Update(float dt, DxGraphics *dx, DebugCamera& cam, DirectI
 							  if (point < obj->m_controlPoints.size())
 							  {
 								  point++;
-						  }
+							  }
 						  }
 					  }
-							  XMFLOAT3* q = &obj->m_controlPoints[point]->m_originalPos;
-							  //ROTATE Point by a vector
+					  XMFLOAT3* q = &obj->m_controlPoints[point]->m_originalPos;
+					  //ROTATE Point by a vector
 
-							  XMFLOAT3 goalPosition = rotateVect(MatrixToXMFLOAT3X3(RotMat), *q);
+					  XMFLOAT3 goalPosition = rotateVect(MatrixToXMFLOAT3X3(RotMat), *q);
 
-							  //Offset to deformed position.
-							  goalPosition = goalPosition + obj->m_originalCOM;
-							  //Assign New goalposition  for a point
-							  obj->m_controlPoints[point]->m_goalPosition = goalPosition;
+					  //Offset to deformed position.
+					  goalPosition = goalPosition + obj->m_originalCOM;
+					  //Assign New goalposition  for a point
+					  obj->m_controlPoints[point]->m_goalPosition = goalPosition;
 
-							  //Update point //veocity//position..
+					  //Update point //veocity//position..
 
-							  PointUpdate(obj->m_controlPoints[point], dt);
+					  PointUpdate(obj->m_controlPoints[point], dt);
 
-							  //update model vertecies
-							  obj->object->GetModel().verticesPosNor[point].position = obj->m_controlPoints[point]->m_goalPosition;
+					  //update model vertecies
+					  obj->object->GetModel().verticesPosNor[point].position = obj->m_controlPoints[point]->m_currentPos;
 
-							 m_particles[point]->Update(dt);
-							 m_particles[point]->SetPosition(obj->m_controlPoints[point]->m_currentPos + obj->object->GetPosition());
-						 
+					  m_particles[point]->Update(dt);
+					  m_particles[point]->SetPosition(obj->m_controlPoints[point]->m_currentPos + obj->object->GetPosition());
+
 				  }
 			  }
+
 			  break;
 	}
 

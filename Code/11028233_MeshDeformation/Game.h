@@ -19,7 +19,6 @@
 #include <Eigen/LU>
 #include "Line.h"
 #include "LightManager.h"
-#include "VehicleCamera.h"
 
 
 class Game

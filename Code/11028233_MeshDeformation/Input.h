@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include "DirectInput.h"
-#include "GamepadInput.h"
 #include "Utilities.h"
 
 using std::vector;
@@ -26,7 +25,6 @@ public:
 
 	void SetController(int playerNumber, bool usingController);
 
-	void Shutdown();
 
 	DirectInput* GetDirectInput();
 private:
@@ -41,9 +39,6 @@ private:
 
 	DirectInput* m_directInput;
 
-	vector<GamepadInput*> m_gamepad;
-
-	void CheckGamepadInput(int player);
 	void CheckKeyboardInput(int player);
 
 	enum m_keyNames {LEFT = 0, MIDDLE = 1, RIGHT = 2, BACK = 3};

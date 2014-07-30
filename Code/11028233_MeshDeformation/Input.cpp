@@ -9,7 +9,6 @@ Input::Input(DirectInput* dI) : m_shutdown(false), m_playerCount(4), m_directInp
 		vector<bool> newKeys;
 
 		m_controllerInput.push_back(true);
-		m_gamepad.push_back(new GamepadInput(i));
 	
 		for(unsigned int j = 0; j < 4; j++)
 		{
@@ -24,7 +23,6 @@ Input::~Input()
 {
 	if(!m_shutdown)
 	{
-		Shutdown();
 	}
 }
 
@@ -35,22 +33,7 @@ void Input::CheckInput()
 	//check all the players input
 	for(unsigned int p = 0; p < (unsigned int)m_playerCount; p++)
 	{
-		//check to see if the gamepad is connected
-		if(m_gamepad[p]->IsConnected())
-		{
-			m_controllerInput[p] = true;
-		}
-
-		if(m_controllerInput[p])
-		{
-			//check all the controller inputs
-			CheckGamepadInput(p);
-		}
-		else
-		{
-			//check all the keyboard inputs
 			CheckKeyboardInput(p);
-		}
 	}
 
 	if((m_directInput->GetKeyboardState(DIK_F1)) &&
@@ -76,69 +59,6 @@ void Input::SetController(int playerNumber, bool usingController)
 	m_controllerInput[playerNumber] = usingController;
 }
 
-void Input::Shutdown()
-{
-	if(!m_shutdown)
-	{
-		DeleteVector(m_gamepad);
-		
-		m_shutdown = true;
-	}
-}
-
-void Input::CheckGamepadInput(int player)
-{
-	//check if the player controller is connected
-	if(m_gamepad[player]->IsConnected())
-	{
-
-		//Check to see if the player is pressing A
-		if(m_gamepad[player]->GetState().Gamepad.wButtons ==
-			XINPUT_GAMEPAD_A)
-		{
-			m_keysPressed[player][MIDDLE] = true;
-		}
-		else
-		{
-			m_keysPressed[player][MIDDLE] = false;
-		}
-
-		//Check if the player is pressing the left trigger
-		if(m_gamepad[player]->GetState().Gamepad.bLeftTrigger > 5)
-		{
-			m_keysPressed[player][LEFT] = true;
-		}
-		else
-		{
-			m_keysPressed[player][LEFT] = false;
-		}
-
-		//Check if the player is pressing the right trigger
-		if(m_gamepad[player]->GetState().Gamepad.bRightTrigger > 5)
-		{
-			m_keysPressed[player][RIGHT] = true;
-		}
-		else
-		{
-			m_keysPressed[player][RIGHT] = false;
-		}
-
-		//Check if the player is pressing the back button
-		if(m_gamepad[player]->GetState().Gamepad.wButtons ==
-			XINPUT_GAMEPAD_BACK)
-		{
-			m_keysPressed[player][BACK] = true;
-		}
-		else
-		{
-			m_keysPressed[player][BACK] = false;
-		}
-	}
-	else
-	{
-		m_controllerInput[player] = false;
-	}
-}
 
 void Input::CheckKeyboardInput(int player)
 {
