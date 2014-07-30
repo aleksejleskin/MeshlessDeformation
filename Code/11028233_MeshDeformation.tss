@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Aleksej\Documents\GitHub\MeshlessDeformation\11028233_MeshDeformation\Game.cpp</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Aleksej\Documents\GitHub\MeshlessDeformation\11028233_MeshDeformation\MeshDeformation.cpp</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Aleksej\Documents\GitHub\MeshlessDeformation\11028233_MeshDeformation\ComputeShaderObject.cpp</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Aleksej\Documents\GitHub\MeshlessDeformation\11028233_MeshDeformation\Scene.cpp</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Aleksej\Documents\GitHub\MeshlessDeformation\11028233_MeshDeformation\Vehicle.cpp</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>

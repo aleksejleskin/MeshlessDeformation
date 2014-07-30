@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8890E162-20DC-41EB-A46B-3DE8597607D3}</ProjectGuid>
+    <RootNamespace>SmallBoxStudios</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <AdditionalIncludeDirectories>..\11028233_MeshDeformation\Eigen\Eigen;..\11028233_MeshDeformation\anttweakbar;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d11.lib;d3dx11d.lib;D3DCompiler.lib;dxerr.lib;dxgi.lib;XInput.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>...\11028233_MeshDeformation\anttweakbar\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\Additional\Eigen\Eigen;..\Additional\anttweakbar\include;..\Additional\XNA;..\\Additional\BulletPhysics\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>d3d11.lib;d3dx11d.lib;D3DCompiler.lib;dxerr.lib;dxgi.lib;XInput.lib;dinput8.lib;dxguid.lib;BulletCollision_release.lib;BulletDynamics_release.lib;LinearMath_release.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Additional\Eigen\Eigen;..\Additional\anttweakbar\lib;..\\Additional\BulletPhysics\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CellShaderObject.cpp" />
+    <ClCompile Include="DebugCamera.cpp" />
+    <ClCompile Include="LightManager.cpp" />
+    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="MeshDeformation.cpp" />
+    <ClCompile Include="PhysicsManager.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="DxGraphics.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="DirectInput.cpp" />
+    <ClCompile Include="GampadInput.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PhysicsObject.cpp" />
+    <ClCompile Include="System.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="VehicleCamera.cpp" />
+    <ClCompile Include="xnacollision.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CellShaderObject.h" />
+    <ClInclude Include="DebugCamera.h" />
+    <ClInclude Include="LightManager.h" />
+    <ClInclude Include="Line.h" />
+    <ClInclude Include="MatrixMath2.h" />
+    <ClInclude Include="ModelManager.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="MeshDeformation.h" />
+    <ClInclude Include="PhysicsManager.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="Debug.h" />
+    <ClInclude Include="DxGraphics.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="DirectInput.h" />
+    <ClInclude Include="GamepadInput.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="MathHelper.h" />
+    <ClInclude Include="PhysicsObject.h" />
+    <ClInclude Include="System.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Utilities.h" />
+    <ClInclude Include="VehicleCamera.h" />
+    <ClInclude Include="VertexTypes.h" />
+    <ClInclude Include="xnacollision.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cellShader.fx" />
+    <None Include="Data\Models\body.sbs" />
+    <None Include="Data\Models\body2.sbs" />
+    <None Include="Data\Models\cubeTex.sbs" />
+    <None Include="Data\Models\retro.sbs" />
+    <None Include="Data\Models\splitter.sbs" />
+    <None Include="Data\Models\spoiler.sbs" />
+    <None Include="Data\Models\testTerrain.sbs" />
+    <None Include="Data\Models\wheel.sbs" />
+    <None Include="Data\Shaders\colourShader.fx" />
+    <None Include="Data\Textures\body.png" />
+    <None Include="Data\Textures\Boost.png" />
+    <None Include="Data\Textures\Gravity.png" />
+    <None Include="Data\Textures\hMap.jpg" />
+    <None Include="Data\Textures\Scale.png" />
+    <None Include="Data\Textures\Test.png" />
+    <None Include="Data\Textures\wheel.png" />
+    <None Include="Deform.hlsl" />
+    <None Include="Effects.fx" />
+    <None Include="PedestalBase.sbs" />
+    <None Include="PlayerBackdrop.sbs" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

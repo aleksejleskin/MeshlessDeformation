@@ -212,3 +212,9 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+Code/Additional
+Core/Debug
+Code/11028233_MeshDeformation/Debug
+Code/11028233_MeshDeformation/Release
+Code/11028233_MeshDeformation.sdf

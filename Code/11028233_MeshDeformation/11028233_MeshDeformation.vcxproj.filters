@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GampadInput.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="DxGraphics.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectInput.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObject.cpp">
+      <Filter>Source\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelManager.cpp">
+      <Filter>Source\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
+      <Filter>Source\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshDeformation.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="xnacollision.cpp">
+      <Filter>Headers\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>Source\ResourceManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="VehicleCamera.cpp">
+      <Filter>Headers\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="LightManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CellShaderObject.cpp">
+      <Filter>Source\cellshader</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugCamera.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectInput.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="DxGraphics.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GamepadInput.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Headers\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObject.h">
+      <Filter>Headers\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelManager.h">
+      <Filter>Headers\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>Headers\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Headers\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexTypes.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Headers\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixMath2.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshDeformation.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="xnacollision.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>Headers\ResourceManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="VehicleCamera.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="LightManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CellShaderObject.h">
+      <Filter>Source\cellshader</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugCamera.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{f5ed30ee-0a74-473e-b178-7e70240a376f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{38ac0a0c-dc9f-4ebf-b522-645f977fa44a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{1dc95070-97e6-4e60-a5e3-d0fc9cfc1e63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core">
+      <UniqueIdentifier>{1cbf89e8-514e-4361-bb4b-006f1b446752}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core">
+      <UniqueIdentifier>{3f4dd19d-7e86-43b6-852a-ae1d9782c0d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Objects">
+      <UniqueIdentifier>{c5f25076-967f-4c1a-a518-b8db39914559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Object">
+      <UniqueIdentifier>{a0a6d0dc-857b-4595-96f7-05e2c937376a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Models">
+      <UniqueIdentifier>{22b6081f-06d3-487a-bb33-5623ae24bc9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shaders">
+      <UniqueIdentifier>{84bbe59d-220d-487f-af82-b991a3441f49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\ResourceManagers">
+      <UniqueIdentifier>{4749f5fb-94a7-4f2f-ad55-59e2aca54cad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Textures">
+      <UniqueIdentifier>{53a71069-ae06-488f-b780-99307c639c97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Textures\PowerUps">
+      <UniqueIdentifier>{f2fa5b71-3df6-4260-b11a-ccc8dc040435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ResourceManagers">
+      <UniqueIdentifier>{83b86aef-cc9f-4c6b-a05c-998addf840a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\cellshader">
+      <UniqueIdentifier>{e5ef5a15-1d09-48a7-bdaf-203d9282c6a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\cellsahder">
+      <UniqueIdentifier>{b3f51325-d28a-4340-85a8-200c21872f9b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Models\body.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="Data\Textures\Test.png">
+      <Filter>Resource\Textures</Filter>
+    </None>
+    <None Include="Data\Shaders\colourShader.fx">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+    <None Include="Data\Textures\body.png">
+      <Filter>Resource\Textures</Filter>
+    </None>
+    <None Include="Data\Textures\wheel.png">
+      <Filter>Resource\Textures</Filter>
+    </None>
+    <None Include="Data\Models\cubeTex.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="Data\Models\retro.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="Data\Models\splitter.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="Data\Models\spoiler.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="Data\Models\testTerrain.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="Data\Models\wheel.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="Data\Textures\hMap.jpg">
+      <Filter>Resource\Textures</Filter>
+    </None>
+    <None Include="PedestalBase.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="PlayerBackdrop.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="Data\Models\body2.sbs">
+      <Filter>Resource\Models</Filter>
+    </None>
+    <None Include="Data\Textures\Boost.png">
+      <Filter>Resource\Textures\PowerUps</Filter>
+    </None>
+    <None Include="Data\Textures\Gravity.png">
+      <Filter>Resource\Textures\PowerUps</Filter>
+    </None>
+    <None Include="Data\Textures\Scale.png">
+      <Filter>Resource\Textures\PowerUps</Filter>
+    </None>
+    <None Include="Effects.fx">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+    <None Include="cellShader.fx">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+    <None Include="Deform.hlsl">
+      <Filter>Resource\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
