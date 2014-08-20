@@ -57,7 +57,7 @@ bool PhysicsManager::LoadContent()
 void PhysicsManager::Update(float dt)
 {
 	///step the simulation btPhysics
-	m_dynamicsWorld->stepSimulation(dt , 1);
+	m_dynamicsWorld->stepSimulation(dt , 2);
 	//Stops jitter???
 	//m_dynamicsWorld->stepSimulation(1.f / 60.f, 0);
 }
@@ -67,7 +67,7 @@ btDynamicsWorld* PhysicsManager::GetWorld()
 	return m_dynamicsWorld;
 }
 
-btRigidBody* PhysicsManager::localCreateRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape)
+btRigidBody* PhysicsManager::localCreateRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, short v1, short v2)
 {
 	btAssert((!shape || shape->getShapeType() != INVALID_SHAPE_PROXYTYPE));
 
@@ -94,7 +94,7 @@ btRigidBody* PhysicsManager::localCreateRigidBody(float mass, const btTransform&
 	body->setWorldTransform(startTransform);
 #endif//
 
-	m_dynamicsWorld->addRigidBody(body);
+	m_dynamicsWorld->addRigidBody(body, v1, v2);
 
 	return body;
 }

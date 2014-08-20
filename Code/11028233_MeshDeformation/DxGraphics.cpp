@@ -234,7 +234,7 @@ void DxGraphics::StartRender()
 void DxGraphics::EndRender()
 {
 	//Present the back buffer
-	m_swapChain->Present(1, 0);
+	m_swapChain->Present(0, 0);
 }
 
 void DxGraphics::Shutdown()

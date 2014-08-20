@@ -14,9 +14,9 @@
 #include "Box.h"
 #include "MeshDeformation.h"
 #include <Windows.h>
-#include <Eigen/Eigen>
-#include <Eigen/Core>
-#include <Eigen/LU>
+//#include <Eigen/Eigen>
+//#include <Eigen/Core>
+//#include <Eigen/LU>
 #include "Line.h"
 #include "LightManager.h"
 
@@ -58,10 +58,12 @@ private:
 	Input* m_input;
 	ResourceManager m_resources;
 	Box* box;
+	Box* m_obstacle2;
 	MeshDeformation m_particleSystem;
 	Line line;
 	Box* m_wall;
-
+	Box* m_terrain;
+	Box* m_obstacle;
 	bool camView;
 };
 

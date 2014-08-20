@@ -10,10 +10,10 @@ m_rotationOrigin(XMFLOAT3(0, 0, 0))
 	m_mass = 0;
 }
 
-bool PhysicsObject::CreateRigidBody(float mass, XMFLOAT3 gravity, int collisionFlags)
+bool PhysicsObject::CreateRigidBody(float mass, XMFLOAT3 gravity, int collisionFlags,short v1,short v2)
 {
 	CalcualteBoxExtents();
-	if (m_collisionBoxExtents.y == 0) m_collisionBoxExtents.y = 1.0f;
+	if (m_collisionBoxExtents.y == 0) m_collisionBoxExtents.y = 2.0f;
 	btBoxShape* groundShape = new btBoxShape(btVector3(m_collisionBoxExtents.x, m_collisionBoxExtents.y, m_collisionBoxExtents.z));
 	//groundShape->initializePolyhedralFeatures();
 
@@ -26,7 +26,7 @@ bool PhysicsObject::CreateRigidBody(float mass, XMFLOAT3 gravity, int collisionF
 	groundTransform.setRotation(quatRot);
 
 	//setupthe object and add to the world
-	m_rigidBody = localCreateRigidBody(mass, groundTransform, groundShape);
+	m_rigidBody = localCreateRigidBody(mass, groundTransform, groundShape,v1,v2);
 	m_rigidBody->setCollisionFlags(m_rigidBody->getCollisionFlags() | collisionFlags);
 	m_rigidBody->setGravity(btVector3(gravity.x, gravity.y, gravity.z));
 	m_rigidBody->setUserPointer(NULL);
@@ -331,7 +331,7 @@ btRigidBody * PhysicsObject::GetRigidBody()
 	return m_rigidBody;
 }
 
-btRigidBody* PhysicsObject::localCreateRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape)
+btRigidBody* PhysicsObject::localCreateRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, short v1,short v2)
 {
 	btAssert((!shape || shape->getShapeType() != INVALID_SHAPE_PROXYTYPE));
 
@@ -358,7 +358,7 @@ btRigidBody* PhysicsObject::localCreateRigidBody(float mass, const btTransform& 
 	body->setWorldTransform(startTransform);
 #endif//
 
-	m_dynamicsWorld->addRigidBody(body);
+	m_dynamicsWorld->addRigidBody(body,v1,v2);
 
 	return body;
 }

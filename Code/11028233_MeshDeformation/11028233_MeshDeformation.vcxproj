@@ -78,6 +78,7 @@
       <AdditionalIncludeDirectories>..\Additional\Eigen\Eigen;..\Additional\anttweakbar\include;..\Additional\XNA;..\\Additional\BulletPhysics\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -116,6 +117,7 @@
     <ClInclude Include="Box.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CellShaderObject.h" />
+    <ClInclude Include="Collisions.h" />
     <ClInclude Include="DebugCamera.h" />
     <ClInclude Include="LightManager.h" />
     <ClInclude Include="Line.h" />

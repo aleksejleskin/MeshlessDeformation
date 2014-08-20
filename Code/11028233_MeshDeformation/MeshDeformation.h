@@ -14,38 +14,41 @@
 #include "Box.h"
 #include "Line.h"
 #include "LightManager.h"
+#include "PhysicsManager.h"
+//#include "Collisions.h"
 using namespace MatrixMath;
 using namespace Eigen;
 using namespace std;
 
+
 struct BufType
 {
 	float fa;
-	XMFLOAT3 ff;
+	Vector3f ff;
 };
 
 struct input
 {
-	XMFLOAT3 currentPosition;
+	Vector3f currentPosition;
 };
 
 struct output
 {
-	XMFLOAT3 relativePosition;
+	Vector3f relativePosition;
 
 };
 
 struct values
 {
-	XMFLOAT3 COM;
+	Vector3f COM;
 	float mass;
 	float total;
 };
 
 struct Cluster
 {
-	XMFLOAT3		m_deformedCenterOfMass;
-	XMFLOAT3		m_originalCenterOfMass;
+	Vector3f		m_deformedCenterOfMass;
+	Vector3f		m_originalCenterOfMass;
 	vector<int>		m_vertecies;
 	XMFLOAT4X4		m_Aqq;
 	XMFLOAT4X4		m_Apq;
@@ -54,21 +57,21 @@ struct Cluster
 struct ControlPoint
 {
 	//ogirianl position of a vertex
-	XMFLOAT3		 m_originalPos;
+	Vector3f		 m_originalPos;
 	//position of a particle relative to the center of mass of an obejct (deformed and original shape)
-	XMFLOAT3		 m_relativePosDeformed;
-	XMFLOAT3		 m_relativePosOriginal;
+	Vector3f		 m_relativePosDeformed;
+	Vector3f		 m_relativePosOriginal;
 	//current position (deformed).
-	XMFLOAT3		 m_currentPos;
+	Vector3f		 m_currentPos;
 	//point where the current point tends to go towards.
-	XMFLOAT3		 m_goalPosition;
+	Vector3f		 m_goalPosition;
 	//mass
 	float			 m_mass;
 	//relative position of a point in quadratic terms.
-	float			 q_quad[9];
+	MatrixXf		 Qmat;
 
-	XMFLOAT3		 velocity;
-	XMFLOAT3		 m_force;
+	Vector3f		 velocity;
+	Vector3f		 m_force;
 };
 
 struct MeshObject
@@ -78,19 +81,29 @@ struct MeshObject
 	//all vertecies;
 	vector<ControlPoint*> m_controlPoints;
 	//center of mass for the (original and deformed shape)
-	XMFLOAT3		m_originalCOM;
-	XMFLOAT3		m_deformedCOM;
+	Vector3f		m_originalCOM;
+	Vector3f		m_deformedCOM;
 
-	XMFLOAT4X4		m_Aqq;
-	XMFLOAT4X4		m_Apq;
+	Matrix3f		m_Aqq;
+	Matrix3f		m_Apq;
 
 	// stiffness controll value
 	float			m_alpha;
 	// deformation ammount
 	float			m_beta;
-	MatrixXd		m_Aqq_tilde, m_Apq_tilde;
+	MatrixXf		m_Aqq_tilde, m_Apq_tilde;
 
 	float			m_originalVolume, m_deformedVolume;
+
+	//Optimal Rotation Matrix
+	Matrix3f Rotation;
+	//Linear transformation Matrix
+	Matrix3f A;
+	//Quadratic transforamtion matrix
+	MatrixXf AQM;
+	//Clusters
+	vector<Cluster> m_clusters;
+	Vector3f m_clusterAmmount;
 };
 
 
@@ -105,7 +118,7 @@ public:
 
 
 	void Render(DxGraphics* dx, Camera& cam, LightManager & lightManager);
-	void AddObject(GameObject* box, DxGraphics *dx, ResourceManager& resource, XMFLOAT3 pos);
+	void AddObject(PhysicsObject* box, DxGraphics *dx, ResourceManager& resource, XMFLOAT3 pos);
 
 private:
 	//calcualte relative positions //Initial center of mass //Scaling matrix
@@ -133,8 +146,8 @@ private:
 	//Calcualte Scaling Matrix
 	void CalcualteAqqMatrix(MeshObject* object);
 
-	void CalcualteApqMatrix_Tilde(MeshObject* object);
-	void CalcualteAqqMatrix_Tilde(MeshObject* object);
+	void CalcualteApqMatrix_Tilde(MeshObject& object);
+	void CalcualteAqqMatrix_Tilde(MeshObject& object);
 
 	//Differance in shape.
 	void CalcualteOriginalMeshSum(MeshObject* object);
@@ -192,7 +205,7 @@ private:
 	ID3D11Buffer*               g_pBufResult;
 
 	ID3D11ShaderResourceView*   g_pBuf0SRV;
-	ID3D11UnorderedAccessView*   g_pBuf1SRV;
+	ID3D11ShaderResourceView*   g_pBuf1SRV;
 	ID3D11UnorderedAccessView*  g_pBufResultUAV;
 
 	BufType g_vBuf0[5];
@@ -232,5 +245,16 @@ private:
 
 	XMFLOAT3 rot;
 	float Y;
+	float Snorm;
+	float fromBond;
+	btDynamicsWorld*	m_dynamicsWorld;
+	vector<btRigidBody*> m_collisionSpheres;
+	PhysicsObject * p_box;
+	bool stop;
+
+	float Cyield;
+	float Ccreep;
+	//how much c in order to break;
+	float Cmax;
 };
 #endif 

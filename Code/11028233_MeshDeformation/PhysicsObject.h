@@ -23,7 +23,7 @@ public:
 	virtual void Update(float dt);
 
 	//used to add a initialize and add a collidibale object to the physics simualtion.
-	btRigidBody* localCreateRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape);
+	btRigidBody* localCreateRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, short v1, short v2);
 	//Calcualte collision box extens used for bulletphysics
 	void CalcualteBoxExtents();
 	//Getter fo the collision extents
@@ -41,7 +41,7 @@ public:
 	btRigidBody* m_rigidBody;
 
 
-	bool CreateRigidBody(float mass, XMFLOAT3 gravity, int collisionFlags);
+	bool CreateRigidBody(float mass, XMFLOAT3 gravity, int collisionFlags, short v1, short v2);
 	//calcualte collision box from the model vertecies.
 	btCollisionShape* CreateCollisionShape();
 	btCylinderShapeX* CreateCollisionShapeCylinder();

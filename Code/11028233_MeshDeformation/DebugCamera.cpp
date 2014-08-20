@@ -17,44 +17,47 @@ void DebugCamera::Initialise(XMFLOAT3 position, float yaw, float pitch, float ro
 
 void DebugCamera::Update(float dt, DirectInput* dInput)
 {
-	//XMFLOAT3 pos = XMFLOAT3(0,0,0);
-	//XMStoreFloat3( &pos, vPosition );
-
-	//std::cout << pos.x << std::endl;
 	CalculateViewMatrix();
-	if (dInput->GetKeyboardState(DIK_UP))
+	if (dInput->GetKeyboardState(DIK_NUMPAD8))
 	{
-		XMVECTOR vMove = GetForwardBackward();
+		XMVECTOR vMove = GetUpDown();
 		vMove *= 100.0f * dt;
 		MoveCamera(vMove);
 	}
 
-	if (dInput->GetKeyboardState(DIK_DOWN))
+	if (dInput->GetKeyboardState(DIK_NUMPAD5))
 	{
-		XMVECTOR vMove = -GetForwardBackward();
+		XMVECTOR vMove = -GetUpDown();
 		vMove *= 100.0f*dt;
 		MoveCamera(vMove);
 	}
 
-	if (dInput->GetKeyboardState(DIK_LEFT))
+	if (dInput->GetKeyboardState(DIK_NUMPAD4))
 	{
 		XMVECTOR vMove = -GetRightLeft();
 		vMove *= 100.0f*dt;
 		MoveCamera(vMove);
 	}
 
-	if (dInput->GetKeyboardState(DIK_RIGHT))
+	if (dInput->GetKeyboardState(DIK_NUMPAD6))
 	{
 		XMVECTOR vMove = GetRightLeft();
 		vMove *= 100.0f*dt;
 		MoveCamera(vMove);
 	}
 
-	m_aimX = m_mouseSens * (dInput->GetMouseX() / 1280.0f) * dt;
-	m_aimY = -m_mouseSens * (dInput->GetMouseY() / 800.0f) * dt;
+	if (dInput->GetKeyboardState(DIK_NUMPAD9))
+	{
+		XMVECTOR vMove = -GetForwardBackward();
+		vMove *= 100.0f*dt;
+		MoveCamera(vMove);
+	}
 
-	RotPitch(m_aimY);
-	RotYaw(m_aimX);
-
+	if (dInput->GetKeyboardState(DIK_NUMPAD7))
+	{
+		XMVECTOR vMove = GetForwardBackward();
+		vMove *= 100.0f*dt;
+		MoveCamera(vMove);
+	}
 	Camera::Update(dt);
 }

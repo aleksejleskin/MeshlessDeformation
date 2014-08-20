@@ -1,6 +1,6 @@
 #include "Box.h"
 
-Box::Box() : GameObject(), m_currentObjectTime(0)
+Box::Box() : PhysicsObject(), m_currentObjectTime(0)
 {
 	m_collisionOBB.Extents.x =1;
 	m_collisionOBB.Extents.y = 1;
@@ -24,9 +24,8 @@ Box::Box(string filename, float mass, float yaw,
 }
 
 bool Box::LoadContent(DxGraphics *dx, XMFLOAT3 position, ResourceManager& resource,
-	float yaw, float pitch, float roll, float scale, bool _rigid)
+	float yaw, float pitch, float roll, float scale)
 {
-	rigid = _rigid;
 	//m_model->filename = _filename;
 	if (!GameObject::LoadContent(dx, position, yaw, pitch, roll, scale))
 	{
@@ -50,13 +49,17 @@ bool Box::LoadContent(DxGraphics *dx, XMFLOAT3 position, ResourceManager& resour
 	{
 		return false;
 	}
-	if (rigid)
-	{
-	//	m_dynamicsWorld = resource.GetPhysicsManager()->GetWorld();
-//		PhysicsObject::CreateRigidBody(100.0f, XMFLOAT3(0, -10, 0), btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	}
+	
+	m_dynamicsWorld = resource.GetPhysicsManager()->GetWorld();
+
 
 	return true;
+}
+
+void Box::ApplyPhysics(float _weight, XMFLOAT3 _gravity, int _collisionType, short v1, short v2)
+{
+	rigid = true;
+	PhysicsObject::CreateRigidBody(_weight, _gravity, _collisionType,  v1,  v2);
 }
 
 void Box::UnloadContent()
@@ -68,7 +71,7 @@ void Box::Update(float dt, DxGraphics *dx, Camera &camM, DirectInput* dInput)
 {
 	if (rigid)
 	{
-		//PhysicsObject::Update(dt);
+		PhysicsObject::Update(dt);
 	}
 	else
 	{

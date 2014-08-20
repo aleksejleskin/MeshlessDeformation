@@ -20,7 +20,7 @@ public:
 
 
 	//create a rigid body and add to the simualtion world.
-	btRigidBody* localCreateRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape);
+	btRigidBody* localCreateRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape,short v1,short v2);
 
 	btDynamicsWorld* GetWorld();
 private:

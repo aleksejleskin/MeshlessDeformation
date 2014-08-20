@@ -23,22 +23,6 @@ Contains the MathHelper namespace for ease of use functions
 namespace MatrixMath
 {
 
-	inline float MatrixDeterminant3X3(XMMATRIX & iM)
-	{
-		XMMATRIX M = iM;
-		float aei, bfg, cdh, ceg, bdi, afh;
-		aei = (M(0, 0) * M(1, 1) * M(2, 2));
-		bfg = (M(0, 1) * M(1, 2) * M(2, 0));
-		cdh = (M(0, 2) * M(1, 0) * M(2, 1));
-
-		ceg = (M(0, 2) * M(1, 1) * M(2, 0));
-		bdi = (M(0, 1) * M(1, 0) * M(2, 2));
-		afh = (M(0, 0) * M(1, 2) * M(2, 1));
-
-		return((aei + bfg + cdh) - (ceg + bdi + afh));
-	}
-
-
 
 	inline XMFLOAT3X3 MatrixToXMFLOAT3X3(XMMATRIX &M)
 	{
@@ -86,60 +70,14 @@ namespace MatrixMath
 		return iX;
 	}
 
-	inline XMMATRIX volumeNormalize(XMMATRIX &M) {
+	inline Matrix3f volumeNormalize(Matrix3f M)
+	{
+		//calcauclte cubic root of matrix determinant
+		double cbrt = pow(fabs((double)M.determinant()), 1. / 3);
+		cbrt = ((double)M.determinant() < 0) ? -cbrt : cbrt;
+		M = M / cbrt;
 
-		XMMATRIX A = M;
-		XMMATRIX A_calc;
-		for (int j = 0; j < 3; j++) {
-			for (int ii = 0; ii < 3; ii++) {
-				A_calc(j, ii) = A(ii, j);
-			}
-		}
-		double det = MatrixDeterminant3X3(A_calc);
-		double cbrt = pow(fabs(det), 1. / 3);
-		cbrt = (det < 0) ? -cbrt : cbrt;
-
-		for (int j = 0; j < 3; j++) {
-			for (int ii = 0; ii < 3; ii++) {
-				A_calc(j, ii) = A_calc(j, ii) / (float)cbrt;
-			}
-		}
-
-		for (int j = 0; j < 3; j++) {
-			for (int ii = 0; ii < 3; ii++) {
-				A(ii, j) = A_calc(j, ii);
-			}
-		}
-
-		return A;
-	}
-
-	inline XMFLOAT3X3 volumeNormalize(XMFLOAT3X3 &M) {
-
-		XMFLOAT3X3 A = M;
-		XMFLOAT3X3 A_calc;
-		for (int j = 0; j < 3; j++) {
-			for (int ii = 0; ii < 3; ii++) {
-				A_calc(j, ii) = A(ii, j);
-			}
-		}
-		double det = MatrixDeterminant3X3(XMFLOAT3X3ToMatrix(A_calc));
-		double cbrt = pow(fabs(det), 1. / 3);
-		cbrt = (det < 0) ? -cbrt : cbrt;
-
-		for (int j = 0; j < 3; j++) {
-			for (int ii = 0; ii < 3; ii++) {
-				A_calc(j, ii) = A_calc(j, ii) / (float)cbrt;
-			}
-		}
-
-		for (int j = 0; j < 3; j++) {
-			for (int ii = 0; ii < 3; ii++) {
-				A(ii, j) = A_calc(j, ii);
-			}
-		}
-
-		return A;
+		return M;
 	}
 
 
@@ -216,27 +154,27 @@ namespace MatrixMath
 		return iO;
 	}
 
-	inline XMFLOAT3 rotateVect(XMFLOAT3X3 & M, XMFLOAT3& vect)
+	inline Vector3f rotateVect(Matrix3f & M, Vector3f& vect)
 	{
 
-		XMFLOAT3 tmp = vect;
-		XMFLOAT3 out;
+		Vector3f tmp = vect;
+		Vector3f out;
 		for (size_t iRow = 0; iRow < 3; iRow++)
 		{
-			out.x =
-				M._11 * tmp.x +
-				M._12 * tmp.y +
-				M._13 * tmp.z;
+			out.x() =
+				M(0,0) * tmp.x() +
+				M(0,1) * tmp.y() +
+				M(0,2) * tmp.z();
 
-			out.y =
-				M._21 * tmp.x +
-				M._22 * tmp.y +
-				M._23 * tmp.z;
+			out.y() =
+				M(1,0) * tmp.x() +
+				M(1,1) * tmp.y() +
+				M(1,2) * tmp.z();
 
-			out.z =
-				M._31 * tmp.x +
-				M._32 * tmp.y +
-				M._33 * tmp.z;
+			out.z() =
+				M(2,0) * tmp.x() +
+				M(2,1) * tmp.y() +
+				M(2,2) * tmp.z();
 		}
 
 		return out;
@@ -266,7 +204,6 @@ namespace MatrixMath
 
 	}
 
-
 	//multiply each index of matrix
 	inline XMMATRIX operator^ (XMMATRIX & iA, XMMATRIX & iB)
 	{
@@ -291,7 +228,7 @@ namespace MatrixMath
 		return C;
 	}
 
-	inline void Jacobi(XMFLOAT3X3  mat, XMFLOAT3X3  jmat, int j, int k) {
+	inline void Jacobi(XMFLOAT3X3&  mat, XMFLOAT3X3&  jmat, int j, int k) {
 		// First, check if entries (j,k) is too small or not, if so, do nothing
 		if (abs(mat(j,k)) > 1e-20) {
 			// This is just some math to figure out cosine and sine necessary to zero out the two entries
@@ -308,8 +245,9 @@ namespace MatrixMath
 		}
 	}
 
-	inline XMMATRIX ComputeOptimumRotation(XMMATRIX& A) 
+	inline XMMATRIX ComputeOptimumRotation(XMMATRIX& _A) 
 	{
+		XMMATRIX A = _A;
 		XMMATRIX jmat = XMMatrixIdentity();
 		XMMATRIX mat = XMMatrixMultiply(XMMatrixTranspose(A), A);
 		
@@ -371,6 +309,44 @@ namespace MatrixMath
 	}
 }
 
+inline Vector3f XMFLOAT3toVector3f(XMFLOAT3 _value)
+{
+	Vector3f returnValue = Vector3f(_value.x, _value.y, _value.z);
+	return returnValue;
+}
 
+inline XMFLOAT3 Vector3ftoXMFLOAT3(Vector3f _value)
+{
+	XMFLOAT3 returnValue = XMFLOAT3(_value.x(), _value.y(), _value.z());
+	return returnValue;
+}
+
+inline XMMATRIX Matrix3ftoXMMATRIX(Matrix3f _eigenMat)
+{
+	XMMATRIX returnMatrix;
+	for (int col = 0; col < 3; col++)
+	{
+		for (int row = 0; row < 3; row++)
+		{
+			returnMatrix(col, row) = _eigenMat(col, row);
+		}
+	}
+
+	return returnMatrix;
+}
+
+inline Matrix3f XMMATRIXtoMatrix3f(XMMATRIX& _eigenMat)
+{
+	Matrix3f returnMatrix;
+	for (int col = 0; col < 3; col++)
+	{
+		for (int row = 0; row < 3; row++)
+		{
+			returnMatrix(col, row) = _eigenMat(col, row);
+		}
+	}
+
+	return returnMatrix;
+}
 
 #endif

@@ -150,6 +150,9 @@
     <ClInclude Include="CellShaderObject.h">
       <Filter>Headers\cellsahder</Filter>
     </ClInclude>
+    <ClInclude Include="Collisions.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
